@@ -1,0 +1,24 @@
+const fs = require('fs');
+
+const promisify = (f) => {
+  return function(a) {
+    return new Promise((success, error) => {
+      f(a, function(err, b) {
+        if (err) {
+          error(err);
+        } else {
+          success(b);
+        }
+      });
+    });
+  };
+};
+
+const stat = promisify(fs.stat);
+
+stat('..').then((stats) => {
+  const msg = stats.isFile() ? "Is a file" : "Not a file";
+  console.log(msg);
+}).catch((error) => {
+  console.log(error);
+});

@@ -4,11 +4,22 @@
   "description": "",
   "main": "promisify.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node start.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "jest": "^23.6.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }

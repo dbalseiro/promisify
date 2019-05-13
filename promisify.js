@@ -1,16 +1,18 @@
-const fs = require('fs');
+import { stat } from "fs";
 
-const promisify = ... 
+const promisify = () => {
+  throw new Error("Not Implemented");
+};
 
-const stat = promisify(fs.stat);
+const promisified_stat = promisify(stat);
 
-stat('temp')
-  .then((stats) => {
+promisified_stat("temp")
+  .then(stats => {
     const msg = stats.isFile() ? "Is a file" : "Not a file";
     console.log(msg);
   })
-  .catch((error) => {
+  .catch(error => {
     console.log(error);
   });
 
-module.exports = promisify;
+export default promisify;
